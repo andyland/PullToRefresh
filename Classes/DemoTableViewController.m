@@ -40,7 +40,7 @@
     return cell;
 }
 
-- (void)refresh {
+- (void) refreshPullRefreshTableView:(PullRefreshTableView*)tableView {
     [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
 }
 
@@ -53,7 +53,7 @@
 
     [self.tableView reloadData];
 
-    [self stopLoading];
+    [self.tableView stopLoading];
 }
 
 - (void)dealloc {

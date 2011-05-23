@@ -5,6 +5,9 @@
 //  Created by Leah Culver on 7/2/10.
 //  Copyright (c) 2010 Leah Culver
 //
+//  Modified by Andrew McSherry on 5/22/11.
+//  Copyright 2011 Andyland Development. All rights reserved.
+//
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
 //  files (the "Software"), to deal in the Software without
@@ -29,30 +32,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PullRefreshTableView.h"
 
-@interface PullRefreshTableViewController : UITableViewController {
-    UIView *refreshHeaderView;
-    UILabel *refreshLabel;
-    UIImageView *refreshArrow;
-    UIActivityIndicatorView *refreshSpinner;
-    BOOL isDragging;
-    BOOL isLoading;
-    NSString *textPull;
-    NSString *textRelease;
-    NSString *textLoading;
+@interface PullRefreshTableViewController : UITableViewController <PullRefreshTableViewDelegate, PullRefreshTableViewDataSource> {
+    UITableViewStyle style;
 }
 
-@property (nonatomic, retain) UIView *refreshHeaderView;
-@property (nonatomic, retain) UILabel *refreshLabel;
-@property (nonatomic, retain) UIImageView *refreshArrow;
-@property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
-@property (nonatomic, copy) NSString *textPull;
-@property (nonatomic, copy) NSString *textRelease;
-@property (nonatomic, copy) NSString *textLoading;
-
-- (void)addPullToRefreshHeader;
-- (void)startLoading;
-- (void)stopLoading;
-- (void)refresh;
+@property (nonatomic, retain) PullRefreshTableView *tableView;
 
 @end

@@ -1,11 +1,8 @@
 //
-//  PullRefreshTableViewController.m
-//  Plancast
+//  PullRefreshTableView.h
+//  PullToRefresh
 //
-//  Created by Leah Culver on 7/2/10.
-//  Copyright (c) 2010 Leah Culver
-//
-//  Modified by Andrew McSherry on 5/22/11.
+//  Created by Andrew McSherry on 5/22/11.
 //  Copyright 2011 Andyland Development. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -30,35 +27,40 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "PullRefreshTableViewController.h"
 
-#define REFRESH_HEADER_HEIGHT 52.0f
+@class PullRefreshTableView;
 
+@protocol PullRefreshTableViewDataSource <UITableViewDelegate>
 
-@implementation PullRefreshTableViewController
+- (void) refreshPullRefreshTableView:(PullRefreshTableView*)tableView;
 
-@dynamic tableView;
+@end
 
-- (id)initWithStyle:(UITableViewStyle)style_ {
-    self = [super initWithStyle:style_];
-    if (self != nil) {
-        style = style_;
-    }
-    return self;
+#pragma mark -
+
+@protocol PullRefreshTableViewDelegate <UITableViewDelegate>
+
+@end
+
+#pragma mark -
+
+@interface PullRefreshTableView : UITableView {
+    UIView *refreshHeaderView;
+    UILabel *refreshLabel;
+    UIImageView *refreshArrow;
+    UIActivityIndicatorView *refreshSpinner;
+    BOOL isDragging;
+    BOOL isLoading;
+    NSString *textPull;
+    NSString *textRelease;
+    NSString *textLoading;
 }
 
-- (void) loadView {
-    self.tableView = [[[PullRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, 320, 480) style:style] autorelease];
-    self.view = self.tableView;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-}
+@property (nonatomic, assign) id<PullRefreshTableViewDataSource> dataSource;
+@property (nonatomic, assign) id<PullRefreshTableViewDelegate> delegate;
 
-- (void) refreshPullRefreshTableView:(PullRefreshTableView *)tableView {
-    // This is just a demo. Override this method with your custom reload action.
-    // Don't forget to call stopLoading at the end.
-    [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];
-}
+- (void) stopLoading;
 
 @end
