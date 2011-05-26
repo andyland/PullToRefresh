@@ -23,7 +23,7 @@ and [arrow.png](http://github.com/leah/PullToRefresh/raw/master/arrow.png) into 
 
 3. Use all the files exactly as you would their UIKit parents
 
-4. Implement the -[id<PullRefreshTableViewDataSource> refreshPullRefreshTableView:(PullRefreshTableView*)tableview] protocol method
+4. Implement the -[id\<PullRefreshTableViewDataSource\> refreshPullRefreshTableView:(PullRefreshTableView*)tableview] protocol method
 
 
 Enjoy!
