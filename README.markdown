@@ -13,15 +13,17 @@ and [EGOTableViewPullRefresh](http://github.com/enormego/EGOTableViewPullRefresh
 
 How to intall
 
-1. Copy the files, [PullRefreshTableViewController.h](http://github.com/leah/PullToRefresh/raw/master/Classes/PullRefreshTableViewController.h),
-[PullRefreshTableViewController.m](http://github.com/leah/PullToRefresh/blob/master/Classes/PullRefreshTableViewController.m),
+1. Copy the files, [PullRefreshTableViewController.h](https://github.com/andylanddev/PullToRefresh/raw/master/Classes/PullRefreshTableViewController.h),
+[PullRefreshTableViewController.m](https://github.com/andylanddev/PullToRefresh/raw/master/Classes/PullRefreshTableViewController.m), 
+[PullRefreshTableView.h](https://github.com/andylanddev/PullToRefresh/raw/master/Classes/PullRefreshTableView.h), 
+[PullRefreshTableView.m](https://github.com/andylanddev/PullToRefresh/raw/master/Classes/PullRefreshTableView.m)
 and [arrow.png](http://github.com/leah/PullToRefresh/raw/master/arrow.png) into your project.
 
 2. Link against the QuartzCore framework (used for rotating the arrow image).
 
-3. Create a TableViewController that is a subclass of PullRefreshTableViewController.
+3. Use all the files exactly as you would their UIKit parents
 
-4. Customize by adding your own refresh() method.
+4. Implement the -[id<PullRefreshTableViewDataSource> refreshPullRefreshTableView:(PullRefreshTableView*)tableview] protocol method
 
 
 Enjoy!
