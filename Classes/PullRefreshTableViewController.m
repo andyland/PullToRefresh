@@ -33,26 +33,43 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PullRefreshTableViewController.h"
 
-#define REFRESH_HEADER_HEIGHT 52.0f
-
-
 @implementation PullRefreshTableViewController
 
 @dynamic tableView;
+
+- (id) init {
+    if (self = [super init]) {
+        style = UITableViewStylePlain;
+        loadFromNIB = NO;
+    }
+    return self;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style_ {
     self = [super initWithStyle:style_];
     if (self != nil) {
         style = style_;
+        loadFromNIB = NO;
+    }
+    return self;
+}
+
+- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        loadFromNIB = YES;
     }
     return self;
 }
 
 - (void) loadView {
-    self.tableView = [[[PullRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, 320, 480) style:style] autorelease];
-    self.view = self.tableView;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    if (loadFromNIB) {
+        [super loadView];
+    } else {
+        self.tableView = [[[PullRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, 320, 480) style:style] autorelease];
+        self.view = self.tableView;
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+    }
 }
 
 - (void) refreshPullRefreshTableView:(PullRefreshTableView *)tableView {

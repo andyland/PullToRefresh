@@ -36,8 +36,9 @@
 
 @interface PullRefreshTableViewController : UITableViewController <PullRefreshTableViewDelegate, PullRefreshTableViewDataSource> {
     UITableViewStyle style;
+    BOOL loadFromNIB;
 }
 
-@property (nonatomic, retain) PullRefreshTableView *tableView;
+@property (nonatomic, retain) IBOutlet PullRefreshTableView *tableView;
 
 @end

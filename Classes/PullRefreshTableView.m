@@ -88,6 +88,20 @@
 #pragma mark -
 #pragma mark Initialization
 
+- (id) initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self addPullToRefreshHeader];
+    }
+    return self;
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self addPullToRefreshHeader];
+    }
+    return self;
+}
+
 - (id) initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     if (self = [super initWithFrame:frame style:style]) {
         [self addPullToRefreshHeader];
