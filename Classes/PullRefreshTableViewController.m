@@ -6,7 +6,7 @@
 //  Copyright (c) 2010 Leah Culver
 //
 //  Modified by Andrew McSherry on 5/22/11.
-//  Copyright 2011 Andyland Development. All rights reserved.
+//  Copyright 2011 Andyland Development.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation

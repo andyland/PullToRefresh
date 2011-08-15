@@ -3,7 +3,7 @@
 //  PullToRefresh
 //
 //  Created by Andrew McSherry on 5/22/11.
-//  Copyright 2011 Andyland Development. All rights reserved.
+//  Copyright 2011 Andyland Development.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -110,20 +110,21 @@
 }
 
 - (void)addPullToRefreshHeader {
-    refreshHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, 320, REFRESH_HEADER_HEIGHT)];
+    self.refreshHeaderView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0 - REFRESH_HEADER_HEIGHT, 320, REFRESH_HEADER_HEIGHT)] autorelease];
     refreshHeaderView.backgroundColor = [UIColor clearColor];
     
-    refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, REFRESH_HEADER_HEIGHT)];
+    self.refreshLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, REFRESH_HEADER_HEIGHT)] autorelease];
     refreshLabel.backgroundColor = [UIColor clearColor];
     refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
     refreshLabel.textAlignment = UITextAlignmentCenter;
     
-    refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
+    self.refreshArrow = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]] autorelease];
+    self.refreshArrow.backgroundColor = [UIColor blackColor];
     refreshArrow.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 27) / 2,
                                     (REFRESH_HEADER_HEIGHT - 44) / 2,
                                     27, 44);
     
-    refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.refreshSpinner = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
     refreshSpinner.frame = CGRectMake((REFRESH_HEADER_HEIGHT - 20) / 2, (REFRESH_HEADER_HEIGHT - 20) / 2, 20, 20);
     refreshSpinner.hidesWhenStopped = YES;
     
@@ -217,6 +218,11 @@
 #pragma mark -
 #pragma mark Public Methods
 
+- (void) reloadData {
+    [self stopLoading];
+    [super reloadData];
+}
+
 - (void)stopLoading {
     isLoading = NO;
     
@@ -233,14 +239,20 @@
 #pragma mark -
 #pragma mark Message Forwarding
 
+- (BOOL) respondsToSelector:(SEL)selector {
+    return [super respondsToSelector:selector] ||
+           [self.privateDelegate respondsToSelector:selector] || 
+           [self.privateDatasource respondsToSelector:selector];
+}
+
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
     NSMethodSignature *signature = nil;
     
-    if (signature = [super methodSignatureForSelector:aSelector]) {
+    if ((signature = [super methodSignatureForSelector:aSelector])) {
         return signature;
-    } else if (signature = [self.privateDelegate methodSignatureForSelector:aSelector]) {
+    } else if ((signature = [self.privateDelegate methodSignatureForSelector:aSelector])) {
         return signature;
-    } else if (signature = [self.privateDatasource methodSignatureForSelector:aSelector]) {
+    } else if ((signature = [self.privateDatasource methodSignatureForSelector:aSelector])) {
         return signature;
     }
     return nil;
@@ -260,13 +272,13 @@
 #pragma mark Memory Management;
 
 - (void) dealloc {
-    [refreshHeaderView release];
-    [refreshLabel release];
-    [refreshArrow release];
-    [refreshSpinner release];
-    [textPull release];
-    [textRelease release];
-    [textLoading release];
+    self.refreshHeaderView = nil;
+    self.refreshLabel = nil;
+    self.refreshArrow = nil;
+    self.refreshSpinner = nil;
+    self.textPull = nil;
+    self.textRelease = nil;
+    self.textLoading = nil;
     [super dealloc];
 }
 

@@ -3,7 +3,7 @@
 //  PullToRefresh
 //
 //  Created by Andrew McSherry on 5/22/11.
-//  Copyright 2011 Andyland Development. All rights reserved.
+//  Copyright 2011 Andyland Development.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -32,7 +32,7 @@
 
 @class PullRefreshTableView;
 
-@protocol PullRefreshTableViewDataSource <UITableViewDelegate>
+@protocol PullRefreshTableViewDataSource <UITableViewDataSource>
 
 - (void) refreshPullRefreshTableView:(PullRefreshTableView*)tableView;
 
@@ -60,6 +60,9 @@
 
 @property (nonatomic, assign) id<PullRefreshTableViewDataSource> dataSource;
 @property (nonatomic, assign) id<PullRefreshTableViewDelegate> delegate;
+
+//No need to call stopLoading if this is called
+- (void) reloadData;
 
 - (void) stopLoading;
 
