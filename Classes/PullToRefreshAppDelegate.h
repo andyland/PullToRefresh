@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PullToRefreshAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    UINavigationController *navigationController;
-}
+@interface PullToRefreshAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navigationController;

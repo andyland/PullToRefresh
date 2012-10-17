@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		4CAFBCEF11FC994F00651784 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 4CAFBCEE11FC994F00651784 /* README.markdown */; };
 		4CAFBD0111FC9B2100651784 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAFBD0011FC9B2100651784 /* QuartzCore.framework */; };
 		4CBE3BEE11FE21CB007696B3 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBE3BED11FE21CB007696B3 /* arrow.png */; };
+		A1EF0A3C162E950C0095C1A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1EF0A3B162E950C0095C1A8 /* Default-568h@2x.png */; };
 		B7F696901388CF8B00B93926 /* PullRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F6968F1388CF8B00B93926 /* PullRefreshTableView.m */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		4CAFBD0011FC9B2100651784 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4CBE3BED11FE21CB007696B3 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PullToRefresh-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PullToRefresh-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A1EF0A3B162E950C0095C1A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B7F6968E1388CF8B00B93926 /* PullRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableView.h; sourceTree = "<group>"; };
 		B7F6968F1388CF8B00B93926 /* PullRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A1EF0A3B162E950C0095C1A8 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -146,8 +149,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PullToRefresh" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -173,6 +179,7 @@
 			files = (
 				4CAFBCEF11FC994F00651784 /* README.markdown in Resources */,
 				4CBE3BEE11FE21CB007696B3 /* arrow.png in Resources */,
+				A1EF0A3C162E950C0095C1A8 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +236,6 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -243,8 +249,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

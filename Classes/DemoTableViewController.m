@@ -8,14 +8,21 @@
 
 #import "DemoTableViewController.h"
 
+@interface DemoTableViewController()
+
+@property (nonatomic, retain) NSMutableArray *items;
+
+@end
 
 @implementation DemoTableViewController
+
+@synthesize items = _items;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.title = @"Pull to Refresh";
-    items = [[NSMutableArray alloc] initWithObjects:@"What time is it?", nil];
+    self.items = [NSMutableArray arrayWithObjects:@"What time is it?", nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -23,7 +30,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [items count];
+    return [self.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -34,7 +41,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    cell.textLabel.text = [items objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.items objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
@@ -49,7 +56,7 @@
     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
     NSString *now = [dateFormatter stringFromDate:[NSDate date]];
-    [items insertObject:[NSString stringWithFormat:@"%@", now] atIndex:0];
+    [self.items insertObject:[NSString stringWithFormat:@"%@", now] atIndex:0];
 
     [self.tableView reloadData];
 
@@ -57,7 +64,7 @@
 }
 
 - (void)dealloc {
-    [items release];
+    [_items release];
     [super dealloc];
 }
 
